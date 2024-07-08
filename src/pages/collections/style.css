@@ -1,0 +1,450 @@
+
+
+.collection--top {
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 50vh;
+    background-size: 100%;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2.4rem;
+    text-align: center;
+}
+
+
+.collection--details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #efefef;
+}
+
+.collection--heading {
+    font-size: 4.2rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: #eee;
+    margin-bottom: 1.8rem;
+}
+
+.collection--link {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    font-family: inherit;
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+}
+.collection--link a {
+    transition: all .35s;
+}
+.collection--link a:hover {
+    opacity: .8;
+}
+
+.collection--description {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    margin-bottom: 1.45rem;
+}
+
+.collection--count {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    padding: .8rem;
+    border-radius: .2rem;
+    font-weight: 500;
+    box-shadow: inset 0 0 0 .1rem #ddd;
+}
+
+
+
+.collection--filters {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: .12rem solid #eee;
+}
+.collection--filters.main--desktop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.main--desktop .filters {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+
+
+.filter--grid-view {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.filter--grid-view div {
+    border: 1px solid #ddd;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .2rem;
+    transition: all .35s;
+    cursor: pointer;
+}
+.filter--grid-view div:hover {
+    opacity: .7;
+}
+.filter--grid-view .collection--view {
+    width: .2rem;
+    height: 1.28rem;
+    background-color: #555;
+}
+.filter--grid-view div.active--view {
+    background-color: #ddd;
+}
+
+.filter--tabs {
+    position: relative;
+    transition: all .35s;
+}
+.tabs--heading {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    cursor: pointer;
+}
+
+.tabs--heading p, .filter--controls p {
+    font-size: 1.48rem;
+    font-weight: 500;
+    color: #555;
+}
+
+.tabs--heading .icon {
+    font-size: 1.1rem;
+    transition: all .35s;
+}
+.tabs--heading .icon.icon--active {
+    transform: rotate(180deg);
+    color: #01afa6;
+}
+
+
+/* ================================= */
+/* ================================= */
+
+
+
+.filter--dropdown {
+    position: absolute;
+    top: 150%;
+    left: 0;
+    min-width: 24rem;
+    z-index: 500;
+    border-top: 1.4px solid #01afa6;
+}
+@keyframes move-down {
+    0% {
+        padding-top: 0;
+        padding-bottom: 0;
+        opacity: 0;
+    }
+    100% {
+        padding-top: 1.8rem;
+        padding-bottom: 1.8rem;
+        opacity: 1;
+    }
+}
+.filter--dropdown figure {
+    width: 100%;
+    height: auto;
+    padding: 1.8rem;
+    background-color: #fff;
+    
+    animation: move-down .35s ease-out;
+    animation-fill-mode: backwards;
+    animation-delay: .35s;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.4rem;
+    box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, .1);
+}
+.filter--dropdown p:first-child {
+    font-size: 1.24rem;
+    font-weight: 600;
+    color: #777;
+}
+.filter--links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+    width: 100%;
+}
+.filter--link a {
+    font-size: 1.28rem;
+}
+
+.filter--selections {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.filter--selections.not-available {
+    color: #777;
+    text-decoration: line-through;
+}
+.filter--select {
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.filter--select.select--active {
+    position: relative;
+}
+.filter--select.select--active::after {
+    content: "";
+    display: inline-block;
+    height: .6rem;
+    width: .6rem;
+    border-radius: 50%;
+    background-color: #01afa6;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.filter--label {
+    font-size: 1.4rem;
+}
+.filter--label span {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.filter--sizes, .filter--colors {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.filter--sizes .size-box p {
+    font-size: 1.2rem !important;
+}
+.filter--sizes .size-box:hover p, .filter--sizes .size-box.selected {
+    color: #fff !important;
+}
+
+.filter--colors .colors {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+}
+.filter--colors .colors p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #555;
+}
+.filter--check {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    cursor: pointer;
+}
+.filter--checkbox {
+    width: 1.4rem;
+    height: 1.4rem;
+    border: .12rem solid #ccc;
+    border-radius: .12rem;
+}
+.filter--checkbox.selected {
+    background-color: #01afa6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-color: transparent;
+}
+.filter--checkbox.selected .icon {
+    color: #fff;
+    font-size: 1rem;
+}
+
+
+
+
+
+.filter--mobile-sidebar .filter--tabs {
+    width: 100%;
+}
+.filter--mobile-sidebar .tabs--heading {
+    justify-content: space-between;
+}
+.filter--mobile-sidebar .filter--dropdown {
+    min-width: 100%;
+    width: 100%;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    position: static;
+    padding: 1.8rem;
+    margin-top: .6rem;
+    margin-bottom: -2.4rem;
+    animation: move-down .35s ease-out;
+    animation-fill-mode: backwards;
+    animation-delay: 0;
+}
+.filter--mobile-sidebar .filter--colors {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.filter--mobile-sidebar {
+    min-width: 30rem;
+    left: 0;
+    animation: menu-slide-in .25s ease-out;
+    padding: 4rem 2.4rem 2.4rem;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4rem !important;
+    transition: all .35s;
+}
+.filter--mobile-sidebar,
+.sorter--mobile-sidebar {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: 1501;
+    transition: all .25s;
+}
+.sorter--mobile-sidebar {
+    min-width: 25rem;
+    padding: 2rem;
+    right: 0;
+    animation: bar-slide-in .25s ease-out;
+}
+.sorter--dropdown,
+.sorter--mobile-sidebar,
+.filter--mobile-sidebar {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+    background-color: #fff;
+    box-shadow: 0 0 1.2rem rgba(0, 0, 0, .15);
+}
+.sorter--dropdown {
+    padding: 2rem 1rem;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    min-width: 18rem;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+.sorter--dropdown li,
+.sorter--mobile-sidebar li {
+    padding: .8rem 1rem;
+    font-size: 1.24rem;
+    font-weight: 500;
+    background-color: transparent;
+    border-radius: .6rem;
+    transition: all .35s;
+}
+.sorter--mobile-sidebar li {
+    font-size: 1.34rem;
+}
+.sorter--dropdown li:hover,
+.sorter--mobile-sidebar li:hover,
+.sorter--mobile-sidebar li.selected {
+    background-color: #eee;
+}
+
+
+
+
+
+
+
+
+.collection--filters.main--mobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    display: none;
+}
+.main--mobile .filter--controls {
+    gap: .68rem;
+    padding: .6rem .8rem;
+}
+.main--desktop .filter--controls {
+    padding: .6rem 1rem;
+    gap: 1rem;
+}
+.filter--controls {
+    box-shadow: inset 0 0 0 .08rem #ddd;
+    border-radius: .2rem;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.main--mobile .filter--controls:last-child {
+    box-shadow: inset 0 0 0 .08rem #f1f1f1;
+    color: #555;
+}
+
+
+
+@media screen and (max-width: 450px) {
+    .collection--filters.main--desktop {
+        display: none;
+    }
+    .collection--filters.main--mobile {
+        display: flex;
+        font-size: 1.4rem;
+    }
+    .collection--heading {
+        font-size: 2rem;
+    }
+}
+@media screen and (max-width: 388px) {
+    .collections .product__figure--name {
+        font-size: 1.6rem;
+    }
+    .collections .product__figure--prices {
+        font-size: 1.24rem;
+        gap: 1rem;
+    }
+    .filter--controls p {
+        font-size: 1.28rem;
+    }
+}
+@media screen and (max-width: 370px) {
+    .collections .product__figure--name {
+        font-size: 1.5rem;
+    }
+    .filter--grid-view {
+        gap: .6rem;
+    }
+    .filter--grid-view div {
+        width: 3.4rem;
+        height: 3.4rem;
+    }
+}

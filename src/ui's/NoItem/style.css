@@ -1,0 +1,45 @@
+
+
+
+.no--container {
+    max-width: 80rem;
+    padding: 4rem 0;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+}
+.no--container h3 {
+    font-size: 4rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+.no--container img {
+    width: 25rem;
+}
+.no--container .btn:link, .no--container .btn:visited {
+    display: inline-block;
+    color: #555;
+    text-decoration: underline;
+    font-weight: 500;
+    font-size: 1.8rem;
+}
+
+
+@media screen and (max-width: 600px) {
+    .no--container {
+        gap: 2.6rem;
+    }
+    .no--container h3 {
+        font-size: 2.6rem;
+        margin-bottom: .6rem;
+    }
+    .no--container img {
+        width: 18rem;
+    }
+    .no--container .btn:link, .no--container .btn:visited {
+        font-size: 1.6rem;
+    }
+}
