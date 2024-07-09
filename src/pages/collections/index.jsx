@@ -14,6 +14,7 @@ import ItemCollections from './components/ItemCollections';
 function index() {
     const [isLoading, setIsLoading] = useState(true);
     const [category, setCategory] = useState(null);
+    const [message, setMessage] = useState('');
 
     const { slug } = useParams();
     const { getRequest } = useDataContext();
@@ -27,11 +28,10 @@ function index() {
 
             try {
                 const data = await getRequest('products/category', slug);
-                console.log(slug, data)
+                if(data?.message && data?.message !== 'Internet Error') throw new Error(data?.message);
                 setCategory(data?.data?.category);
             } catch(err) {
-                // for now, Update later
-                console.log(err)
+                setMessage(err?.message);
             } finally {
                 setIsLoading(false);
             }
@@ -44,17 +44,17 @@ function index() {
         <>
             <Header />
 
-            {isLoading && (
+            {isLoading ? (
                 <MainSpinner />
-            )}
-
-            {(category || slug === 'all') && (
+            ) : (category || slug === 'all') ? (
                 <>
                     <CollectionTop data={category} />
                     <section className='section'>
                         <ItemCollections />
                     </section>
                 </>
+            ) : (
+                <InternetError message={message} />
             )}
 
             <Footer />

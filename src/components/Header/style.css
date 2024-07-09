@@ -44,7 +44,8 @@
     align-items: center;
     gap: .4rem;
     position: relative;
-    height: 2rem;
+    /* height: 2rem; */
+    height: 4rem;
 }
 .nav__item .nav__link:link,
 .nav__item .nav__link:visited {

@@ -1,19 +1,19 @@
 import React from 'react';
+import { useCartContext } from '../../contexts/cartContext';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import './style.css';
 import CartBox from './components/CartBox';
 import CartSummary from './components/CartSummary';
-
 import NoItem from '../../ui\'s/NoItem';
-import { useCartContext } from '../../contexts/cartContext';
+import './style.css';
 
-// import Img from '../../assets/illustrations/3d-casual-life-black-girl-with-empty-shopping-cart.png'
+
 import Img from '../../assets/illustrations/casual-life-3d-side-view-of-shopping-cart-1.png'
 
 function index() {
     const { cartItems } = useCartContext();
+    
     return (
         <>
             <Header />

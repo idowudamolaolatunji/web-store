@@ -209,12 +209,19 @@
 	.items__grid {
 		grid-template-columns: 1fr 1fr;
 		column-gap: 1.8rem;
-		row-gap: 3rem;
+		row-gap: 4rem;
 	}
-
 	.product__figure--img-box {
 		height: auto;
 	    border-radius: .6rem;
+	}
+	.product--discount {
+		top: 5%;
+		left: 5%;
+	}
+	.heart--icon {
+		left: 5%;
+		bottom: 5%;
 	}
 }
 
@@ -225,5 +232,13 @@
 	.items__grid {
 		grid-template-columns: 1fr;
 		padding: 0;
+	}
+	.product--discount {
+		top: 2rem;
+		left: 2rem;
+	}
+	.heart--icon {
+		left: 2rem;
+		bottom: 2rem;
 	}
 }

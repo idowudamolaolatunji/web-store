@@ -48,7 +48,7 @@ function ProductItem({ product }) {
     console.log(totalQuantitesInStock, quantityBasedOnColorAndSizeInStock);
 
     const selectedProduct = { ...product, selectedColor, selectedSize, selectedQuantity, discountedPrice }
-    console.log(selectedProduct)
+    // console.log(selectedProduct)
 
     function handleChangeIndex(i) {
         setCurrIndex(i)

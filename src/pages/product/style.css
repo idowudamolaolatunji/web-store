@@ -24,6 +24,13 @@
     display: flex;
     flex-direction: column;
     gap: 1.4rem;
+
+    /*  */
+    height: 100%;
+    overflow-y: auto;
+}
+.product__image--sub-images::-webkit-scrollbar-thumb {
+    display: none;
 }
 
 .product--sub-image {

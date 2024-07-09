@@ -170,6 +170,7 @@ input::-webkit-inner-spin-button {
     border: 1.4px solid #eee;
     cursor: pointer;
 }
+/* .size-box:active, */
 .size-box:hover,
 .size-box.selected {
     background-color: #01afa6;
@@ -253,7 +254,8 @@ input::-webkit-inner-spin-button {
 .dropdown__card {
     min-width: 20rem;
     position: absolute;
-    top: 2rem;
+    /* top: 2rem; */
+    top: 4rem;
     left: 80%;
     transform: translateX(-35%);
     padding: 1.6rem;

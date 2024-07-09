@@ -23,10 +23,9 @@ export const FavoriteProvider = ({ children }) => {
     }, [favItems]);
 
 
-    const onToggleFavorite = (product) => {
+    function onToggleFavorite(product) {
         const alreadyFavorite = favItems.find((item) => item._id === product._id);
         if(alreadyFavorite) {
-            console.log('I already exist')
             const newFavItem = favItems.filter((item) => item._id !== product._id);
             setActionType('remove');
             setFavItems(newFavItem);
@@ -38,9 +37,17 @@ export const FavoriteProvider = ({ children }) => {
         // display alert here
     };
 
+    function onClearList() {
+        if(favItems?.length > 0) {
+            setFavItems([])
+        }
+        // display alert here
+    }
+
 
     let contextData = {
         onToggleFavorite,
+        onClearList,
         favItems,
         setFavItems
     }

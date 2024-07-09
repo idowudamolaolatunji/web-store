@@ -63,10 +63,19 @@ function ItemCollections() {
 
 
     function handleSelectColor(color) {
-        setSelectedColor(color)
+        if(selectedColor && selectedColor === color) {
+            setSelectedColor(null);
+        } else {
+            setSelectedColor(color);
+        }
     }
+    
     function handleSelectSize(size) {
-        setSelectedSize(size)
+        if(selectedSize && selectedSize === size) {
+            setSelectedSize(null);
+        } else {
+            setSelectedSize(size);
+        }
     }
 
     function handleSorting(option) {
@@ -132,6 +141,8 @@ function ItemCollections() {
             }
             setProducts(data?.data?.products);
         }
+
+        // if(width > 450 && slug) handleFetchProductsInCategory();
         handleFetchProductsInCategory();
     }, [slug]);
 
@@ -149,7 +160,11 @@ function ItemCollections() {
         } else {
             setGridCount(4)
         }
-    }, [width, height])
+    }, [width, height]);
+
+    useEffect(function() {
+        // setIsShowMobileFilter(false);
+    }, [slug]);
 
     return (
         <>
@@ -495,6 +510,12 @@ function ItemCollections() {
                                 </span>
                             )}
                         </span>
+
+                        {console.log(selectedAvailability, selectedColor, selectedSize, selectedTypes?.length > 0, selectedPriceRange?.length > 0)}
+
+                        {(selectedAvailability || selectedColor || selectedSize || selectedTypes?.length > 0 || selectedPriceRange?.length > 0) && (
+                            <button type="button" className='filter--btn'>Apply</button>
+                        )}
                     </div>
                 </>
             )}

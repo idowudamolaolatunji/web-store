@@ -1,0 +1,101 @@
+
+
+
+
+.favorite--figure.main--desktop {
+    display: flex;
+}
+
+.favorite--figure.main--mobile {
+    display: none;
+}
+
+.fav__btn {
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 500;
+    padding: 1.2rem 2rem;
+    margin-top: 4.8rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+@media screen and (max-width: 450px) {
+    .favorite__grid.items__grid {
+        grid-template-columns: 1fr;
+    }
+    .favorite--figure.main--desktop {
+        display: none;
+    }
+    .favorite--figure.main--mobile {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        align-items: flex-start;
+        font-family: inherit;
+    }
+    .favorite--figure .product__figure--img-box {
+        border-radius: .4rem;
+        height: 100%;
+    }
+    .favorite--figure .product--discount {
+        font-size: 1.12rem;
+        top: 10%;
+        left: 10%;
+    }
+    .favorite--figure .product__details {
+        height: 100%;
+        gap: .68rem;
+    }
+    .favorite--figure .product__figure--name {
+        font-size: 1.18rem;
+        font-weight: 600;
+    }
+    .favorite--figure .product__figure--prices {
+        font-size: 1.4rem;
+        font-weight: 500;
+        gap: 1rem;
+    }
+    .favorite--figure .product__figure--slashed {
+        font-size: 1.12rem;
+        font-weight: 400;
+    }
+    .favorite--figure .product__figure--action {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: auto;
+        margin-bottom: .2rem;
+    }
+    .favorite--figure .product__figure--action button {
+        padding: .8rem 1.2rem;
+        background-color: #01afa6;
+        color: #fff;
+        font-weight: 600;
+        font-size: 1.24rem;
+        border-radius: .28rem;
+        display: flex;
+        align-items: center;
+        gap: .2rem;
+        justify-content: center;
+    }
+    .favorite--figure .product__figure--action button .icon {
+        font-size: 1.8rem;
+        margin-bottom: .2rem;
+    }
+    .favorite--figure .product__figure--action button.is--added {
+        background-color: transparent;
+        color: #444;
+        box-shadow: inset 0 0 0 .12rem #eee;
+    }
+    .favorite--figure .heart--icon {
+        position: static;
+        background-color: #eee;
+    }
+}
