@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import MainSpinner from '../../ui\'s/Spinner/MainSpinner';
 // import { IoEyeOutline, IoEyeOffOutline } from 'react-icons/io5'
 import './auth.css';
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContext';
 
 function Login() {
@@ -14,7 +14,8 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const { userLogin } = useAuthContext();
+    const { userLogin, user } = useAuthContext();
+    const navigate = useNavigate();
 
 
     async function handleUserLogin(e) {
@@ -22,6 +23,13 @@ function Login() {
         if(!email || !password) throw new Error('');
         await userLogin(email, password);
     }
+
+
+    useEffect(function () {
+        if (user) {
+            navigate("/dashboard");
+        }
+    }, [user]);
 
 
   return (
@@ -42,13 +50,13 @@ function Login() {
                     </div>
                     <div className="auth__form--item">
                         <div className="auth__form--input-box">
-                            <input type={isShowPassword ? 'text' : 'password'} value={password} onChange={(e) => setPassword(e.target.value)} className="auth__form--input" placeholder="Password*" required />
+                            <input type={!isShowPassword ? 'text' : 'password'} value={password} onChange={(e) => setPassword(e.target.value)} className="auth__form--input" placeholder="Password*" required />
 
                             <span onClick={() => setIsShowPassword(!isShowPassword)}>
                                 {isShowPassword ? (
-                                    <IoEyeOffOutline className="icon" />
-                                ) : (
                                     <IoEyeOutline className="icon" />
+                                ) : (
+                                    <IoEyeOffOutline className="icon" />
                                 )}
                             </span>
                         </div>

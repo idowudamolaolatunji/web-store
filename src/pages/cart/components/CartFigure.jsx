@@ -18,7 +18,7 @@ function cartFigure({ item }) {
 
     const url = `/product/${item?.slug}`;
     const assetUrl = import.meta.env.VITE_SERVER_ASSET_URL + '/products/';
-    const discountAmount = (item?.discountPercent / 100) * item?.price;
+    const discountAmount = (item?.discountPercent / 100) * item?.price || null;
     const discountedPrice = item?.discountPercent ? (item?.price - discountAmount) : item?.price;
 
 
@@ -76,22 +76,30 @@ function cartFigure({ item }) {
 
 
             <figure className="cart--figure main--mobile">
-                <img src={assetUrl + item?.images[0]} alt={item?.name} onClick={handleNagivateToItem} className="cart--figure-product-img" />
+                <Link to={url} className="cart--figure-product-img-box">
+                    <img src={assetUrl + item?.images[0]} alt={item?.name} className="cart--figure-product-img" />
+
+                    {(item?.discountPercent && item?.discountPercent > 0) ? (
+                        <span className="product--discount">-{item?.discountPercent}<p>%</p></span>
+                    ) : (<></>)}
+                </Link>
 
                 <div className="cart--figure-details">
                     <span className='mobile--figure-info'>
-                        <Link to={`/product/${item?.slug}`}><h3 className='cart--figure-heading'>{truncateString(item?.name, 34)}</h3></Link>
-                        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-                            <span>
-                                <p className='cart--figure-des'>Color: {item?.selectedColor} <ColorBoxSm color={item?.selectedColor} /></p>
-                                <p className='cart--figure-des'>Size: {item?.selectedSize}</p>
-                            </span>
+                        <Link to={`/product/${item?.slug}`}>
+                            <h3 className='cart--figure-heading'>{truncateString(item?.name, 34)}</h3>
+                        </Link>
+                        <span className='product__figure--main'>
+                            ₦{numberConverter(discountedPrice)}
+                        </span>
+                        
+                        <span>
+                            <p className='cart--figure-des'>Color: {item?.selectedColor} <ColorBoxSm color={item?.selectedColor} /></p>
+                            <p className='cart--figure-des'>Size: {item?.selectedSize}</p>
+                        </span>
 
-                            <span className='cart--figure-price'>
-                                ₦{numberConverter(discountedPrice)}
-                            </span>
-                        </div>
-                        <div className='flex-al-cen' style={{ gap: '2rem' }}>
+                            
+                        <div className='flex-al-cen' style={{ gap: '2rem', marginTop: 'auto' }}>
                             <div className='cart--quantity'>
                                 <button onClick={decQty}><HiMinus className='icon' /></button>
                                 <p>{item?.selectedQuantity}</p>

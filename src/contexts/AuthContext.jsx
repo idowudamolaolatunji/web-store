@@ -6,19 +6,16 @@ import Cookies from "js-cookie";
 //// CREATING CONTEXT ////
 //////////////////////////////////////////////
 const AuthContext = createContext();
-export default AuthContext;
 
 
 //////////////////////////////////////////////
 //// CREATING PROVIDER ////
 //////////////////////////////////////////////
 export const AuthProvider = ({ children }) => {
-	const [user, setUser] = useState(function() {
-		// Cookies.get("storeuser") ? JSON.parse(Cookies.get("storeuser")) : null
-		Cookies.get("storeuser") ? Cookies.get("storeuser") : null
-    });
+	const [user, setUser] = useState(Cookies.get("storeuser") ? JSON.parse(Cookies.get("storeuser")) : null);
 	const [token, setToken] = useState(Cookies.get("usertoken") || null);
 
+	
     // HANDLE USER AND TOKEN CHANGE
 	function handleChange(user, token ) {
 		setUser(user);
@@ -64,15 +61,19 @@ export const AuthProvider = ({ children }) => {
                 body: JSON.stringify({ email, password }),
 			});
 
-            if(!res.ok) throw new Error('Unable to login');
+			if (!res.ok) {
+                throw new Error('Internet Error');
+            }
             const data = await res.json();
-            if(!data?.status !== 'success') throw new Error(data?.message);
-            handleChange(data?.data?.user, data?.token)
+            if(data?.status !== 'success') throw new Error(data?.message);
+            handleChange(data?.data?.user, data?.token);
             return data;
         } catch(err) {
             return err;
         }
     }
+
+	console.log(user, token)
 
     // USER SIGNUP
     async function userSignup(body) {
@@ -89,7 +90,7 @@ export const AuthProvider = ({ children }) => {
             const data = await res.json();
             if(!data?.status !== 'success') throw new Error(data?.message);
 
-            import.meta.env.VITE_WORK_ENV === 'development' && console.log(res, data);
+            // import.meta.env.VITE_WORK_ENV === 'development' && console.log(res, data);
             return data;
         } catch(err) {
             return err;

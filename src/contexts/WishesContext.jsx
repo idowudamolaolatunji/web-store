@@ -22,7 +22,8 @@ export const WishesProvider = ({ children }) => {
     const { getProtectedRequest } = useDataContext();
 
     async function getWishes() {
-        const data = getProtectedRequest('wishitems');
+        const data = await getProtectedRequest('wishitems');
+        console.log(data)
 
         setWsihtems(data?.data?.wishes);
     }
@@ -33,7 +34,6 @@ export const WishesProvider = ({ children }) => {
         } else {
             setWsihtems([])
         }
-
     }, [user, token]);
 
 

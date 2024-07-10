@@ -39,6 +39,7 @@ function ProductItem({ product }) {
     const discountAmount = (product?.discountPercent / 100) * product?.price;
     const discountedPrice = product?.discountPercent ? (product?.price - discountAmount) : product?.price;
 
+    const categoryUrl = product?.category.split(' ').join('-');
     const shownImage = assetUrl + product?.images[currIndex]
     const productDetails = product?.details;
     const colors = [...new Set(productDetails?.map(el => el.color))];
@@ -192,7 +193,7 @@ function ProductItem({ product }) {
                             <p className='product--nav'>
                                 <Link to={'/'}>home</Link>{' > '}
                                 <Link to={'/collections/all'}>product</Link>{' > '}
-                                <Link to={`/collections/${product?.category}`}>{product?.category}</Link>
+                                <Link to={`/collections/${categoryUrl}`}>{product?.category}</Link>
                             </p>
                             <button className='product-slider-btn left--btn' onClick={handlePrevSlide}><IoIosArrowBack className='icon' /></button>
                             <img src={shownImage} className='product--image' style={ slideDirection === 'right' ? { animation: 'img-slide-in-right'} : slideDirection ? { animation: 'img-slide-in-left' } : {}} alt={product?.name} />

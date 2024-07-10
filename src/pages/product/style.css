@@ -229,7 +229,7 @@
     align-items: center;
     justify-content: center;
     font-weight: 500;
-    border-radius: .4rem;
+    border-radius: .28rem;
     font-size: 1.6rem;
     transition: all .35s;
 }
@@ -337,7 +337,14 @@
         padding: 1.6rem;
     }
     .product--quantity {
-        padding: .8rem;
+        padding: .6rem;
+    }
+    .util--action-btn.btn .icon {
+        font-size: 1.8rem;
+    }
+    .cart--action-btn.btn {
+        font-size: 1.4rem;
+        font-weight: 500;
     }
 
 }

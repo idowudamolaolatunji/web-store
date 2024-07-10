@@ -22,11 +22,12 @@ const filterTypes = ["Women", "Men", "Kids"];
 
 
 function ItemCollections() {
+    const [isLoading, setIsLoading] = useState(true)
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
     const [isShowMobileFilter, setIsShowMobileFilter] = useState(false);
     const [isShowMobileSorter, setIsShowMobileSorter] = useState(false);
-    const [gridCount, setGridCount] = useState(2);
+    const [gridCount, setGridCount] = useState(window.localStorage.getItem('grid-view'));
     const [isShowSorter, setIsShowSorter] = useState(false);
 
     const [selectedSortingOption, setSelectedSortingOption] = useState('Recommended');
@@ -51,7 +52,7 @@ function ItemCollections() {
     const max = 50000;
     const { slug } = useParams();
     const { getRequest } = useDataContext();
-    const { width, height } = useWindowSize();
+    const { width } = useWindowSize();
     const assetUrl = import.meta.env.VITE_SERVER_ASSET_URL + '/products/';
     const productInStock = products?.filter(product => product?.amountInStock > 0);
     const productOutOfStock = products?.filter(product => product?.amountInStock < 1);
@@ -131,6 +132,10 @@ function ItemCollections() {
         }
     }
 
+    useEffect(function() {
+        window.localStorage.setItem('grid-view', gridCount)
+    }, [gridCount]);
+
     useEffect(function () {
         async function handleFetchProductsInCategory() {
             let data;
@@ -140,6 +145,7 @@ function ItemCollections() {
                 data = await getRequest('products/category/products', slug);
             }
             setProducts(data?.data?.products);
+            setIsLoading(false);
         }
 
         // if(width > 450 && slug) handleFetchProductsInCategory();
@@ -160,11 +166,11 @@ function ItemCollections() {
         } else {
             setGridCount(4)
         }
-    }, [width, height]);
+    }, [width]);
 
-    useEffect(function() {
-        // setIsShowMobileFilter(false);
-    }, [slug]);
+    // useEffect(function() {
+    //     setIsShowMobileFilter(false);
+    // }, [slug]);
 
     return (
         <>
@@ -372,9 +378,11 @@ function ItemCollections() {
                     </span>
                 </div>
 
+
+                {/* ITEM */}
                 <div className="items__grid" style={{ gridTemplateColumns: `repeat(${gridCount}, 1fr)` }}>
-                    {(products && products.length > 0) && products.map(product => (
-                        <ItemCard item={product} key={product._id} />
+                    {(!isLoading && products && products.length > 0) && products.map(product => (
+                        <ItemCard item={product} key={product._id} grid={gridCount} isLoading={isLoading} />
                     ))}
                 </div>
             </div>

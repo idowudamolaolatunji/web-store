@@ -15,6 +15,7 @@ export default DataContext;
 export const DataProvider = ({ children }) => {
     const { token, shouldKick } = useAuthContext();
 
+
     // DELETE REQUEST
     async function deleteRequest(route, id) {
         const url = `${import.meta.env.VITE_SERVER_URL}/${route}/${id}`;

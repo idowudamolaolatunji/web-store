@@ -274,6 +274,10 @@ input::-webkit-inner-spin-button {
     font-weight: 500;
 }
 
+.mobile-nav-item a {
+    font-size: 1.4rem;
+}
+
 .dropdown__item a,
 .mobile-nav-item a,
 .filter--link a {
@@ -406,5 +410,4 @@ input::-webkit-inner-spin-button {
         font-size: 3.4rem;
         align-items: center;
     }
-    
 }

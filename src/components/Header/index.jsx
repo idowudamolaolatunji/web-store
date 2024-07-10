@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDataContext } from '../../contexts/DataContext';
 import { useAuthContext } from '../../contexts/AuthContext';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import CollapsibleSpan from 'react-collapsible';
 
 // import Logo from '../../assets/logos/test-logo.png';
@@ -33,12 +33,14 @@ function index() {
     const [showMobileSidebar, setShowMobileSidebar] = useState(false);
     const [showSearchModal, setShowSearchModal] = useState(false);
 
+    const navigate = useNavigate();
+    const { slug } = useParams();
     const { user, token } = useAuthContext();
     const { getRequest } = useDataContext();
     const { cartItems } = useCartContext();
     const { favItems } = useFavoriteContext();
     const { wishItems } = useWishesContext();
-    const navigate = useNavigate();
+    
     const assetUrl = import.meta.env.VITE_SERVER_ASSET_URL + '/products/';
 
     // const token = 'dnxjdncjdjn3jn4jrnj4f';
@@ -69,7 +71,7 @@ function index() {
 
     useEffect(function() {
         setShowMobileSidebar(false)
-    }, []);
+    }, [slug]);
 
     useEffect(function () {
         function controlNavbar() {

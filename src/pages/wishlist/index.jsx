@@ -4,12 +4,14 @@ import Header from '../../components/Header';
 import NoItem from '../../ui\'s/NoItem';
 import Img from '../../assets/illustrations/3d-casual-life-gift-box-with-streamers.png'
 import { useWishesContext } from '../../contexts/WishesContext';
+import WishItem from './components/WishItem';
+import './style.css';
 
-const wishItems = [];
 
 function index() {
-
     const { wishItems } = useWishesContext();
+    
+
     return (
         <>
             <Header />
@@ -23,8 +25,10 @@ function index() {
                                 <span className='details'>{wishItems?.length}</span>
                             </span>
                             <h3 className="section--heading"></h3>
-                            <div className="">
-                                list
+                            <div className="wish__grid">
+                                {wishItems?.prototype?.map(wish => (
+                                    <WishItem key={wish?._id} item={wish} />
+                                ))}
                             </div>
                         </>
                     ) : (

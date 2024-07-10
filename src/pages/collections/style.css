@@ -436,13 +436,19 @@
         font-size: 2rem;
     }
 }
-@media screen and (max-width: 388px) {
-    .collections .product__figure--name {
-        font-size: 1.6rem;
-    }
+@media screen and (max-width: 400px) {
     .collections .product__figure--prices {
         font-size: 1.24rem;
         gap: 1rem;
+    }
+}
+@media screen and (max-width: 388px) {
+    .collections .product__figure--name {
+        font-size: 1.5rem;
+    }
+    .collections .product__figure--prices {
+        font-size: 1.18rem;
+        gap: .8rem;
     }
     .filter--controls p {
         font-size: 1.28rem;
@@ -458,7 +464,7 @@
 }
 @media screen and (max-width: 370px) {
     .collections .product__figure--name {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
     .filter--grid-view {
         gap: .6rem;
